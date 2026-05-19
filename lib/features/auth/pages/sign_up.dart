@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/extension/context_extension.dart';
+import 'package:lms/core/routes/route_name.dart';
 import 'package:lms/core/widgets/custom_text_field.dart';
 import 'package:lms/core/widgets/primary_btn.dart';
 import 'package:lms/features/auth/blocs/sign_up/sign_up_bloc.dart';
@@ -110,11 +111,16 @@ class _SignUpPageState extends State<SignUpPage> {
                       context.showSnackbar(state.msg);
                       context.pop();
 
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              VerifyOtp(email: _emailController.text),
-                        ),
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         VerifyOtp(email: _emailController.text),
+                      //   ),
+                      // );
+
+                      Navigator.of(context).pushNamed(
+                        RouteName.verifyOtp,
+                        arguments: {"email": _emailController.text},
                       );
                     } else if (state is SignUpFailure) {
                       context.showSnackbar(state.msg);

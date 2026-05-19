@@ -1,15 +1,16 @@
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Profile {
   final String id;
   final String username;
   final String name;
   final String email;
+  final bool hasTrainerProfile;
   Profile({
     required this.id,
     required this.username,
     required this.name,
     required this.email,
+    required this.hasTrainerProfile,
   });
 
   factory Profile.fromMap(Map<String, dynamic> map) {
@@ -18,6 +19,7 @@ class Profile {
       username: map['username'],
       name: map['name'],
       email: map['email'],
+      hasTrainerProfile: map['has_trainer_profile'],
     );
   }
 }
