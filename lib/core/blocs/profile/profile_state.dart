@@ -12,9 +12,9 @@ final class ProfileInitial extends ProfileState {}
 final class ProfileLoading extends ProfileState {}
 
 final class ProfileLoaded extends ProfileState {
-  final Profile profile;
+  final User profile;
 
-  ProfileLoaded({required this.profile});
+  const ProfileLoaded({required this.profile});
 
   @override
   List<Object> get props => [profile];
@@ -23,7 +23,7 @@ final class ProfileLoaded extends ProfileState {
 final class ProfileFailure extends ProfileState {
   final String msg;
 
-  ProfileFailure({required this.msg});
+  const ProfileFailure({required this.msg});
 
   @override
   List<Object> get props => [msg];

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lms/core/blocs/profile/profile_bloc.dart';
 import 'package:lms/features/trainer/pages/apply_trainer.dart';
-import 'package:lms/features/trainer/pages/trainer.dart';
+import 'package:lms/features/trainer/pages/trainer_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

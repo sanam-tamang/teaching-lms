@@ -14,7 +14,7 @@ final class SignUpLoading extends SignUpState {}
 final class SignUpLoaded extends SignUpState {
   final String msg;
 
-  SignUpLoaded({required this.msg});
+  const SignUpLoaded({required this.msg});
 
   @override
   List<Object> get props => [msg];
@@ -23,7 +23,7 @@ final class SignUpLoaded extends SignUpState {
 final class SignUpFailure extends SignUpState {
   final String msg;
 
-  SignUpFailure({required this.msg});
+  const SignUpFailure({required this.msg});
 
   @override
   List<Object> get props => [msg];

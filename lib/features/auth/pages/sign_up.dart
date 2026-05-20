@@ -7,7 +7,6 @@ import 'package:lms/core/widgets/custom_text_field.dart';
 import 'package:lms/core/widgets/primary_btn.dart';
 import 'package:lms/features/auth/blocs/sign_up/sign_up_bloc.dart';
 import 'package:lms/features/auth/models/sign_up.dart';
-import 'package:lms/features/auth/pages/verify_otp.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

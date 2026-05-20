@@ -16,7 +16,7 @@ final class VerifyOtpLoaded extends VerifyOtpState {}
 final class VerifyOtpFailure extends VerifyOtpState {
   final String msg;
 
-  VerifyOtpFailure({required this.msg});
+  const VerifyOtpFailure({required this.msg});
 
   @override
   List<Object> get props => [msg];
