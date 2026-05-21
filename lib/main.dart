@@ -5,6 +5,7 @@ import 'package:lms/core/routes/route.dart';
 import 'package:lms/core/routes/route_name.dart';
 import 'package:lms/features/auth/blocs/sign_up/sign_up_bloc.dart';
 import 'package:lms/features/auth/verify_otp/verify_otp_bloc.dart';
+import 'package:lms/features/course/blocs/get_category/get_category_bloc.dart';
 import 'package:lms/features/trainer/blocs/apply/trainer_apply_bloc.dart';
 import 'package:lms/features/trainer/blocs/my_trainer_profile/my_trainer_profile_bloc.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ProfileBloc()),
         BlocProvider(create: (context) => TrainerApplyBloc()),
         BlocProvider(create: (context) => MyTrainerProfileBloc()),
+        BlocProvider(create: (context) => GetCategoryBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

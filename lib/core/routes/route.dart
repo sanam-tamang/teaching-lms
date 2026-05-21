@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lms/core/routes/route_name.dart';
 import 'package:lms/features/auth/pages/sign_up.dart';
 import 'package:lms/features/auth/pages/verify_otp.dart';
+import 'package:lms/features/course/page/create_course.dart';
 import 'package:lms/features/home/pages/home.dart';
 
 class AppRoute {
@@ -19,6 +20,9 @@ class AppRoute {
 
           case RouteName.signup:
             return SignUpPage();
+
+          case CreateCoursePage.routeName:
+            return CreateCoursePage();
 
           default:
             return Scaffold(body: Text("Invalid 404 route not found"));

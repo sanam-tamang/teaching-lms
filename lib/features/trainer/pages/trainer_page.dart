@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lms/core/routes/route_name.dart';
+import 'package:lms/features/course/page/create_course.dart';
 import 'package:lms/features/trainer/blocs/my_trainer_profile/my_trainer_profile_bloc.dart';
 import 'package:lms/features/trainer/model/trainer.dart'; // Adjust path if needed
 
@@ -20,6 +22,8 @@ class _TrainerPageState extends State<TrainerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Trainer Profile'), centerTitle: true),
+      endDrawer: _Drawer(),
       body: BlocBuilder<MyTrainerProfileBloc, MyTrainerProfileState>(
         builder: (context, state) {
           if (state is MyTrainerProfileLoading) {
@@ -37,27 +41,46 @@ class _TrainerPageState extends State<TrainerPage> {
   }
 }
 
+class _Drawer extends StatelessWidget {
+  const _Drawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: SafeArea(
+        child: Column(
+          children: [
+            ListTile(
+              onTap: () {
+                Navigator.of(context).pushNamed(CreateCoursePage.routeName);
+              },
+              title: Text("Create course"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _TrainerBody extends StatelessWidget {
   final TrainerProfile trainer;
 
   const _TrainerBody({required this.trainer});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Trainer Profile'), centerTitle: true),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeaderCard(),
-            const SizedBox(height: 20),
-            _buildStatusAlerts(),
-            const SizedBox(height: 20),
-            _buildSectionTitle('About & Expertise'),
-            _buildInfoCard(),
-          ],
-        ),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildHeaderCard(),
+          const SizedBox(height: 20),
+          _buildStatusAlerts(),
+          const SizedBox(height: 20),
+          _buildSectionTitle('About & Expertise'),
+          _buildInfoCard(),
+        ],
       ),
     );
   }
