@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lms/core/data/storage/token_service.dart';
+import 'package:lms/core/routes/route_name.dart';
+import 'package:lms/main.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {
@@ -41,8 +45,24 @@ class AuthInterceptor extends Interceptor {
   ) async {
     final accessToken = await TokenService.instance.getAccessToken();
 
-    options.headers['Authorization'] = "Bearer $accessToken";
-
+    if (accessToken != null) {
+      options.headers['Authorization'] = "Bearer $accessToken";
+    }
     super.onRequest(options, handler);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.response?.statusCode == 401) {
+
+      TokenService.instance.clearToken();
+
+      navigatorKey.currentState!.pushNamedAndRemoveUntil(
+        RouteName.login,
+        (_) => false,
+      );
+
+      super.onError(err, handler);
+    }
   }
 }

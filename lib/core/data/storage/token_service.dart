@@ -25,9 +25,18 @@ class TokenService {
   Future<String?> getAccessToken() async {
     // await Future.delayed(Duration(seconds: 3));
     final token = await _secureStorage.read(key: _accessKey);
-    if (token == null) {
-      throw "Your token is null";
-    }
+    // if (token == null) {
+    //   throw "Your token is null";
+    // }
     return token;
+  }
+
+  Future<void> clearToken() async {
+    try {
+      await _secureStorage.deleteAll();
+    } catch (e) {
+      print(e);
+      throw "Unable to delete local data";
+    }
   }
 }
