@@ -3,6 +3,7 @@ import 'package:lms/core/errors/error_handler.dart';
 import 'package:lms/core/models/token_model.dart';
 import 'package:lms/core/networks/dio_client.dart';
 import 'package:lms/core/data/storage/token_service.dart';
+import 'package:lms/core/typedef/typedef.dart';
 import 'package:lms/features/auth/models/sign_up.dart';
 
 class AuthRepository {
@@ -36,6 +37,19 @@ class AuthRepository {
       final token = TokenModel.fromMap(response.data['token']);
       await TokenService.instance.save(token);
       return Right(response.data['detail']);
+    } catch (e) {
+      return Left(ErrorHandler.handleError(e));
+    }
+  }
+
+  FutureEither<String> resendOtp({required String email}) async {
+    try {
+      await _dioClient.dio.post(
+        "auth/resend-email-verification/",
+        data: {"email": email},
+      );
+
+      return Right("Resend successful");
     } catch (e) {
       return Left(ErrorHandler.handleError(e));
     }

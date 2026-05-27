@@ -4,6 +4,7 @@ import 'package:lms/core/blocs/profile/profile_bloc.dart';
 import 'package:lms/core/blocs/token/token_cubit.dart';
 import 'package:lms/core/routes/route.dart';
 import 'package:lms/core/routes/route_name.dart';
+import 'package:lms/features/auth/blocs/resend_otp/resend_otp_bloc.dart';
 import 'package:lms/features/auth/blocs/sign_up/sign_up_bloc.dart';
 import 'package:lms/features/auth/verify_otp/verify_otp_bloc.dart';
 import 'package:lms/features/course/blocs/get_category/get_category_bloc.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => MyTrainerProfileBloc()),
         BlocProvider(create: (context) => GetCategoryBloc()),
         BlocProvider(create: (context) => TokenCubit()),
+        BlocProvider(create: (context) => ResendOtpBloc()),
       ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
