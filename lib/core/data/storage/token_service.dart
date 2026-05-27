@@ -31,6 +31,16 @@ class TokenService {
     return token;
   }
 
+
+
+  Future<String?> refreshToken() async {
+    // await Future.delayed(Duration(seconds: 3));
+    final token = await _secureStorage.read(key: _refreshKey);
+    // if (token == null) {
+    //   throw "Your token is null";
+    // }
+    return token;
+  }
   Future<void> clearToken() async {
     try {
       await _secureStorage.deleteAll();
